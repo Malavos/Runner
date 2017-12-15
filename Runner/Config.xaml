@@ -1,0 +1,80 @@
+﻿<Controls:MetroWindow x:Class="Runner.Config"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Runner"
+        mc:Ignorable="d"
+        Icon="Images/fire3.ico"
+        Title="Config" Height="640" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="10">
+
+        <Controls:Flyout x:Name="flyOutTests" Position="Right"
+                         Header="Casos de teste detectados" IsOpen="False" VerticalAlignment="Stretch"
+                         Panel.ZIndex="99999">
+            <Grid>
+                <Controls:ProgressRing IsActive="True" Name="progressRingFlyout" />
+                <ListBox Name="listBoxTests"></ListBox>
+            </Grid>
+        </Controls:Flyout>
+        <Controls:MetroAnimatedSingleRowTabControl>
+            <TabItem Header="Diretórios">
+                <StackPanel Margin="10" >
+                    <!-- Acceptance test folders. -->
+                    <TextBox Controls:TextBoxHelper.Watermark="Diretório dos testes (Acceptance Tests)"
+                             Style="{DynamicResource ButtonCommandMetroTextBox}"
+                             Controls:TextBoxHelper.ButtonCommand="{Binding ChooseFileCommand,Mode=OneWay}" Margin="0,20,0,0"
+                             Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             HorizontalAlignment="Center" Width="500"
+                             x:Name="textBoxTestsDirectory" MouseLeftButtonDown="AbrirDiretorioTeste">
+                        <Controls:TextBoxHelper.ButtonContent>
+                            <Rectangle Width="20" Height="20" MouseDown="AbrirDiretorioTeste">
+                                <Rectangle.Fill>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource appbar_folder_open}"></VisualBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Controls:TextBoxHelper.ButtonContent>
+                        <Control.ToolTip>
+                            Diretório onde estão localizados os roteiros de teste do Codeception. (Arquivos que terminam em "cest").
+                        </Control.ToolTip>
+                    </TextBox>
+                    <Grid Margin="150,25,150,0">
+                        <Button Style="{StaticResource AccentedSquareButtonStyle}"
+                             HorizontalAlignment="Left"  Content="Revalidar Diretório" Click="RevalidarDiretorio"/>
+                        <Button Style="{StaticResource AccentedSquareButtonStyle}"
+                            HorizontalAlignment="Right" VerticalAlignment="Center"  Content="Consultar Testes"
+                                Click="LookupTests"/>
+                    </Grid>
+                    <!-- Diretório de imagens de evidência -->
+                    <TextBox Controls:TextBoxHelper.Watermark="Diretório das imagens de evidência"
+                             Style="{DynamicResource ButtonCommandMetroTextBox}"
+                             Controls:TextBoxHelper.ButtonCommand="{Binding ChooseFileCommand,Mode=OneWay}" Margin="0,20,0,0"
+                             Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             HorizontalAlignment="Center" Width="500">
+                        <Controls:TextBoxHelper.ButtonContent>
+                            <Rectangle Width="20" Height="20">
+                                <Rectangle.Fill>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource appbar_folder_open}"></VisualBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Controls:TextBoxHelper.ButtonContent>
+                        <Control.ToolTip>
+                            Diretório onde serão armazenadas as evidências de teste.
+                        </Control.ToolTip>
+                    </TextBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Configurações gerais">
+            </TabItem>
+            <TabItem Header="Visual"></TabItem>
+        </Controls:MetroAnimatedSingleRowTabControl>
+    </Grid>
+</Controls:MetroWindow>

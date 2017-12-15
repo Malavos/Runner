@@ -1,0 +1,79 @@
+﻿<!--Made originally by Malavos - Malavos@Hotmail.com-->
+<Controls:MetroWindow
+    x:Class="Runner.MainWindow" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Runner"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    mc:Ignorable="d"
+    Title="Runner" Height="100" Width="460"
+    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+    Loaded="Loader" ResizeMode="NoResize" ShowTitleBar="False" WindowStyle="None" Topmost="true">
+    <!--ICON LIST: http://www.barth-dev.de/misc/stack/mahapps-icons-list/-->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!-- Configurations Window -->
+            <Button Height="50" Width="50" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,50,0" Click="Configuration">
+                <Rectangle Width="20" Height="20">
+                    <Rectangle.Fill>
+                        <VisualBrush Stretch="Fill"  Visual="{StaticResource appbar_cog}"></VisualBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Button>
+            <Label Grid.Row="1" Content="Configurações" HorizontalContentAlignment="Center"></Label>
+        </Grid>
+
+        <Grid Grid.Column="1" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Height="50" Width="50" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,50,0">
+                <Rectangle Width="20" Height="20" HorizontalAlignment="Center">
+                    <Rectangle.Fill>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_control_play}"></VisualBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Button>
+            <Label Grid.Row="1" Content="Testes" HorizontalAlignment="Center"></Label>
+        </Grid>
+
+        <Grid Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Height="50" Width="50" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,50,0">
+                <Rectangle Width="20" Height="20">
+                    <Rectangle.Fill>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_futurama_fry}"></VisualBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Button>
+            <Label Grid.Row="1" Content="Sobre/Suporte" HorizontalContentAlignment="Center"></Label>
+        </Grid>
+
+
+    </Grid>
+</Controls:MetroWindow>
+ 
