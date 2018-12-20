@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:Runner"
         mc:Ignorable="d"
         Icon="Images/fire3.ico"
-        Title="Config" Height="640" Width="800">
+        Title="Config" Height="640" Width="900"
+        ShowTitleBar="False">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,7 +27,7 @@
             </Grid>
         </Controls:Flyout>
         <Controls:MetroAnimatedSingleRowTabControl>
-            <TabItem Header="Diretórios">
+            <TabItem Header="Testes de Aceitação">
                 <StackPanel Margin="10" >
                     <!-- Acceptance test folders. -->
                     <TextBox Controls:TextBoxHelper.Watermark="Diretório dos testes (Acceptance Tests)"
@@ -72,7 +73,26 @@
                     </TextBox>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Configurações gerais">
+            <TabItem Header="XUnit">
+                <StackPanel Margin="10">
+                    <!-- Instaladores -->
+                    <Grid Margin="150,25,150,0">
+                        <Button Style="{StaticResource AccentedSquareButtonStyle}"
+                             HorizontalAlignment="Left"  Content="Instalar Coverlet (Global)" Click="InstallCoverlet"/>
+                        <Button Style="{StaticResource AccentedSquareButtonStyle}"
+                            HorizontalAlignment="Right" VerticalAlignment="Center"  Content="Instalar Report Generator (Global)" />
+                    </Grid>
+                    <TextBox Controls:TextBoxHelper.Watermark="Diretório do projeto de Teste"
+                             Style="{DynamicResource ButtonCommandMetroTextBox}"
+                             Controls:TextBoxHelper.ButtonCommand="{Binding ChooseFileCommand,Mode=OneWay}" Margin="0,20,0,0"
+                             Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             HorizontalAlignment="Center" Width="500"
+                             x:Name="textBoxXUnitFolder" MouseLeftButtonDown="SelectXUnitFolder">
+                        
+                    </TextBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Integrações">
             </TabItem>
             <TabItem Header="Visual"></TabItem>
         </Controls:MetroAnimatedSingleRowTabControl>

@@ -3,6 +3,7 @@ using MahApps.Metro.Controls.Dialogs;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace Runner
             InitializeComponent();
             this.WindowState = WindowState.Normal;
             this.Activate();
-            MessageBox.Show(Properties.Settings.Default.AcceptanceTests[0]);
+            //MessageBox.Show(Properties.Settings.Default.AcceptanceTests[0]);
             Loader();
         }
 
@@ -69,11 +70,11 @@ namespace Runner
                 var progressDialog = await this.ShowProgressAsync("Aguarde...", "Estou vasculhando os arquivos.");
                 progressDialog.SetIndeterminate();
 
-                this.Dispatcher.Invoke(() => ProcessarArquivos(fileList, progressDialog, dialog.FileName));
+                this.Dispatcher.Invoke(() => ProccessAcceptanceTestFiles(fileList, progressDialog, dialog.FileName));
             }
         }
 
-        private async void ProcessarArquivos(List<string> files, ProgressDialogController dialog, string directory)
+        private async void ProccessAcceptanceTestFiles(List<string> files, ProgressDialogController dialog, string directory)
         {
             listBoxTests.Items.Clear();
 
@@ -109,10 +110,39 @@ namespace Runner
             Properties.Settings.Default.Save();
         }
 
+        private void InstallCoverlet(object sender, RoutedEventArgs e)
+        {
+            //ProcessStartInfo processInfo = new ProcessStartInfo();
+            //processInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //processInfo.FileName = "cmd.exe";
+            Process.Start("cmd", "/k dotnet tool install --global coverlet.console");
+        }
+
+        private void InstallReportGenerator(object sender, RoutedEventArgs e)
+        {
+            Process.Start("cmd", "/k dotnet tool install --global dotnet-reportgenerator-globaltool");
+        }
+
         private void LookupTests(object sender, RoutedEventArgs e)
         {
             flyOutTests.IsOpen = true;
         }
+
+        private async void SelectXUnitFolder(object sender, RoutedEventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+
+            dialog.InitialDirectory = "C:".TrimEnd(new char[] { '\\' });
+            dialog.IsFolderPicker = true;
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                var files = Directory.GetFiles(dialog.FileName, "*Test*.cs", SearchOption.TopDirectoryOnly);
+                List<string> fileList = files.OfType<string>().ToList();
+                var progressDialog = await this.ShowProgressAsync("Aguarde...", "Estou vasculhando os arquivos.");
+            }
+        }
+
 
         private void RevalidarDiretorio(object sender, RoutedEventArgs e)
         {

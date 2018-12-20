@@ -106,5 +106,30 @@ namespace Runner
         {
 
         }
+
+        private void About(object sender, RoutedEventArgs e)
+        {
+            bool isWindowOpen = false;
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is About)
+                {
+                    isWindowOpen = true;
+                    window.Activate();
+                }
+            }
+
+            if (!isWindowOpen)
+            {
+                About aboutWindow = new About();
+                aboutWindow.Owner = this;
+                aboutWindow.HorizontalAlignment = HorizontalAlignment.Right;
+                aboutWindow.VerticalAlignment = VerticalAlignment.Bottom;
+                aboutWindow.Left = this.Left;
+                aboutWindow.Top = this.Top;
+                aboutWindow.Show();
+            }
+        }
     }
 }

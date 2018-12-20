@@ -6,8 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Runner"
     xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     mc:Ignorable="d"
-    Title="Runner" Height="100" Width="460"
+    Title="Runner" Height="175" Width="500"
     HorizontalAlignment="Right" VerticalAlignment="Bottom"
     Loaded="Loader" ResizeMode="NoResize" ShowTitleBar="False" WindowStyle="None" Topmost="true">
     <!--ICON LIST: http://www.barth-dev.de/misc/stack/mahapps-icons-list/-->
@@ -19,58 +20,94 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style x:Key="AccentCircleButtonStyle"
+                           BasedOn="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                           TargetType="{x:Type ButtonBase}">
+                <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground" Value="{DynamicResource GrayBrush7}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
 
-        <Grid Grid.Column="0" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30*"></RowDefinition>
-                <RowDefinition Height="20*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <!-- Configurations Window -->
-            <Button Height="50" Width="50" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,50,0" Click="Configuration">
-                <Rectangle Width="20" Height="20">
-                    <Rectangle.Fill>
-                        <VisualBrush Stretch="Fill"  Visual="{StaticResource appbar_cog}"></VisualBrush>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Button>
-            <Label Grid.Row="1" Content="Configurações" HorizontalContentAlignment="Center"></Label>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        
+        
 
-        <Grid Grid.Column="1" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30*"></RowDefinition>
-                <RowDefinition Height="20*"></RowDefinition>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Height="50" Width="50" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,50,0">
-                <Rectangle Width="20" Height="20" HorizontalAlignment="Center">
-                    <Rectangle.Fill>
-                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_control_play}"></VisualBrush>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Button>
-            <Label Grid.Row="1" Content="Testes" HorizontalAlignment="Center"></Label>
-        </Grid>
+            <Grid Grid.Column="0" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!-- Configurations Window -->
+                <!--appbar_cog-->
+                <Button Grid.Row="0" Height="48" Width="48" Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                    Foreground="{DynamicResource AccentBaseColorBrush}" Margin="4" Click="Configuration">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <iconPacks:PackIconModern Width="25" Height="25" Kind="Cog"></iconPacks:PackIconModern>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Label Grid.Row="1" Content="Configuração" HorizontalAlignment="Center" Foreground="{DynamicResource HighlightBrush}" FontSize="18" FontWeight="Bold"></Label>
+            </Grid>
 
-        <Grid Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30*"></RowDefinition>
-                <RowDefinition Height="20*"></RowDefinition>
-            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Height="50" Width="50" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,50,0">
-                <Rectangle Width="20" Height="20">
-                    <Rectangle.Fill>
-                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_futurama_fry}"></VisualBrush>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Button>
-            <Label Grid.Row="1" Content="Sobre/Suporte" HorizontalContentAlignment="Center"></Label>
+                <Button Grid.Row="0" Height="48" Width="48" Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                    Foreground="{DynamicResource AccentBaseColorBrush}" Margin="4" Click="TestRunner">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <iconPacks:PackIconModern Width="25" Height="25" Kind="ControlPlay"></iconPacks:PackIconModern>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Label Grid.Row="1" Content="Testes" HorizontalAlignment="Center" Foreground="{DynamicResource HighlightBrush}" FontSize="18" FontWeight="Bold"></Label>
+            </Grid>
+
+            <Grid Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Height="48" Width="48" 
+                    Foreground="{DynamicResource AccentBaseColorBrush}" Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}" 
+                    Margin="4" Click="About">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <iconPacks:PackIconModern Width="25" Height="25" Kind="FuturamaFry" />
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+
+                </Button>
+                <Label Grid.Row="1" Content="Sobre/Suporte" HorizontalContentAlignment="Center" Foreground="{DynamicResource HighlightBrush}" FontSize="18" FontWeight="Bold"></Label>
+            </Grid>
+
+
         </Grid>
 
 
