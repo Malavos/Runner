@@ -8,7 +8,7 @@
     xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     mc:Ignorable="d"
-    Title="Runner" Height="175" Width="500"
+    Title="Runner" Height="200" Width="500"
     HorizontalAlignment="Right" VerticalAlignment="Bottom"
     Loaded="Loader" ResizeMode="NoResize" ShowTitleBar="False" WindowStyle="None" Topmost="true">
     <!--ICON LIST: http://www.barth-dev.de/misc/stack/mahapps-icons-list/-->
@@ -37,14 +37,16 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"></RowDefinition>
-            <RowDefinition Height="25*"></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="35*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
-        
-        
-        
 
+        <Label Grid.Row="0" Foreground="{DynamicResource AccentBaseColorBrush}" 
+               HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold">RUNNER</Label>
+
+        <Label Grid.Row="2" Foreground="LightGray" HorizontalContentAlignment="Right" FontSize="12" FontWeight="Normal">v 0.2</Label>
+        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
