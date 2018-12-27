@@ -2,6 +2,8 @@
 WPF application to help software development teams to delivery better tested solutions.
 
 
+![Running!](https://vignette.wikia.nocookie.net/lumber-tycoon-2/images/b/bf/Vault_Boy_Dock_Icon_by_oloff3.png)
+
 ## What this crazy thing does (or will do)?
 
 This is a WPF application made with MahApps and a bunch of other cool libraries to help development. This is what it will do when it's finished™:
