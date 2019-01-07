@@ -81,6 +81,8 @@
                              HorizontalAlignment="Left"  Content="Instalar Coverlet (Global)" Click="InstallCoverlet"/>
                         <Button Style="{StaticResource AccentedSquareButtonStyle}"
                             HorizontalAlignment="Right" VerticalAlignment="Center"  Content="Instalar Report Generator (Global)" />
+                        <Button Style="{StaticResource AccentedSquareButtonStyle}" Click="InstallChocolatey" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" Content="Instalar Chocolatey" />
                     </Grid>
                     <TextBox Controls:TextBoxHelper.Watermark="Diretório do projeto de Teste"
                              Style="{DynamicResource ButtonCommandMetroTextBox}"
@@ -88,12 +90,13 @@
                              Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                              HorizontalAlignment="Center" Width="500"
                              x:Name="textBoxXUnitFolder" MouseLeftButtonDown="SelectXUnitFolder">
-                        
+
                     </TextBox>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Integrações">
             </TabItem>
+            <TabItem Header="Watcher"></TabItem>
             <TabItem Header="Visual"></TabItem>
         </Controls:MetroAnimatedSingleRowTabControl>
     </Grid>

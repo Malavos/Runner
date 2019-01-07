@@ -1,19 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Runner
 {
@@ -107,6 +95,7 @@ namespace Runner
 
         }
 
+
         private void About(object sender, RoutedEventArgs e)
         {
             bool isWindowOpen = false;
@@ -130,6 +119,17 @@ namespace Runner
                 aboutWindow.Top = this.Top;
                 aboutWindow.Show();
             }
+        }
+
+
+        /// <summary>
+        /// Handler for taskbar button to run tests.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RunTest(object sender, EventArgs e)
+        {
+
         }
     }
 }

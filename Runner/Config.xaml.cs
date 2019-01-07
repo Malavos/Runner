@@ -123,6 +123,17 @@ namespace Runner
             Process.Start("cmd", "/k dotnet tool install --global dotnet-reportgenerator-globaltool");
         }
 
+        private void InstallChocolatey(object sender, RoutedEventArgs e)
+        {
+            Process chocolateyInstallProcess = new Process();
+            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            processStartInfo.FileName = Environment.ExpandEnvironmentVariables("%SystemRoot%") + @"\System32\cmd.exe";
+            processStartInfo.Arguments = @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"" - NoProfile - InputFormat None - ExecutionPolicy Bypass - Command ""iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"" && SET ""PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin""";
+            processStartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+            processStartInfo.Verb = "runas";
+
+        }
+
         private void LookupTests(object sender, RoutedEventArgs e)
         {
             flyOutTests.IsOpen = true;
